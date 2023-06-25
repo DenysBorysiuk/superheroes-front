@@ -1,25 +1,19 @@
 import { useSelector } from "react-redux";
 import { selectHeroes } from "../../redux/heroes/selectors";
 import { List, Notice } from "./HeroesList.styled";
-import { Link, useLocation } from "react-router-dom";
+import HeroesItem from "../HeroesItem/HeroesItem";
 
 const HeroesList = () => {
   const heroes = useSelector(selectHeroes);
-  const location = useLocation();
-  console.log(heroes);
+  // console.log(heroes);
 
   return (
     <List>
       {heroes.length === 0 ? (
         <Notice>list is empty!</Notice>
       ) : (
-        heroes.map(({ _id, nickname }) => (
-          <li key={_id}>
-            <Link to={`/heroDetails/${_id}`} state={{ from: location }}>
-              <p>{nickname}</p>
-              <button>del</button>
-            </Link>
-          </li>
+        heroes.map(({ _id, nickname, images }) => (
+          <HeroesItem key={_id} _id={_id} nickname={nickname} images={images} />
         ))
       )}
     </List>

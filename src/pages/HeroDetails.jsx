@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import HeroAllInfo from "../components/HeroAllInfo/HeroAllInfo";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectHeroes } from "../redux/heroes/selectors";
 
 const HeroDetails = () => {
-  return (
-    <div>
-      <Link to="/">Cancel</Link>
-      <h1>HeroDetails</h1>
-    </div>
-  );
+  const { heroId } = useParams();
+  const heroes = useSelector(selectHeroes);
+  const hero = heroes.find((hero) => hero._id === heroId);
+  // console.log(hero);
+  // console.log(heroes);
+  // console.log(heroId);
+
+  return <HeroAllInfo hero={hero} />;
 };
 
 export default HeroDetails;

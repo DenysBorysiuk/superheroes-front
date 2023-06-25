@@ -9,6 +9,7 @@ const initialState = {
   items: [],
   isLoading: false,
   error: null,
+  totalPages: 0,
 };
 
 const heroesSlice = createSlice({
@@ -17,14 +18,15 @@ const heroesSlice = createSlice({
   extraReducers: (builder) => {
     return builder
       .addCase(fetchHeroes.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.items = action.payload.data.heroes;
+        state.totalPages = action.payload.data.totalPages;
       })
       .addCase(addHero.fulfilled, (state, action) => {
         state.items.push(action.payload);
       })
       .addCase(deleteHero.fulfilled, (state, action) => {
         const index = state.items.findIndex(
-          (contact) => contact._id === action.payload._id
+          (hero) => hero._id === action.payload._id
         );
         state.items.splice(index, 1);
       })

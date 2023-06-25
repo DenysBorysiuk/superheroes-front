@@ -5,10 +5,9 @@ axios.defaults.baseURL = "https://superheroes-f2qf.onrender.com/api";
 
 export const fetchHeroes = createAsyncThunk(
   "heroes/fetchAll",
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const response = await axios.get("/heroes");
-      console.log(response);
+      const response = await axios.get(`/heroes?page=${page}&limit=5`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -18,9 +17,9 @@ export const fetchHeroes = createAsyncThunk(
 
 export const addHero = createAsyncThunk(
   "heroes/addHero",
-  async ({ name, number }, thunkAPI) => {
+  async (formData, thunkAPI) => {
     try {
-      const response = await axios.post("/heroes", { name, number });
+      const response = await axios.post("/heroes", formData);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -30,9 +29,9 @@ export const addHero = createAsyncThunk(
 
 export const deleteHero = createAsyncThunk(
   "heroes/deleteHero",
-  async (contactId, thunkAPI) => {
+  async (heroId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/heroes/${contactId}`);
+      const response = await axios.delete(`/heroes/${heroId}`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -42,12 +41,9 @@ export const deleteHero = createAsyncThunk(
 
 export const updateHero = createAsyncThunk(
   "heroes/updateContact",
-  async ({ _id, name, number }, thunkAPI) => {
+  async ([_id, formData], thunkAPI) => {
     try {
-      const response = await axios.put(`/heroes/${_id}`, {
-        name,
-        number,
-      });
+      const response = await axios.put(`/heroes/${_id}`, formData);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

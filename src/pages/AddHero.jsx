@@ -1,13 +1,7 @@
-import { Link } from "react-router-dom";
+import AddHeroForm from "../components/AddHeroForm/AddHeroForm";
 
 const AddHero = () => {
-  return (
-    <div>
-      <h1>Add Hero</h1>
-      <button>Submit</button>
-      <Link to="/">Cancel</Link>
-    </div>
-  );
+  return <AddHeroForm />;
 };
 
 export default AddHero;
