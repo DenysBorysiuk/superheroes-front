@@ -7,9 +7,6 @@ const HeroDetails = () => {
   const { heroId } = useParams();
   const heroes = useSelector(selectHeroes);
   const hero = heroes.find((hero) => hero._id === heroId);
-  // console.log(hero);
-  // console.log(heroes);
-  // console.log(heroId);
 
   return <HeroAllInfo hero={hero} />;
 };

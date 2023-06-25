@@ -12,12 +12,14 @@ import {
   Input,
   BtnWrap,
   Message,
-  FileLabel,
+  FileInput,
   ImgWrap,
   DelBtn,
+  DelImgBtn,
   Image,
 } from "./HeroAllInfo.styled";
 import { FaRegTrashAlt } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const HeroAllInfo = ({ hero }) => {
   const dispatch = useDispatch();
@@ -52,19 +54,16 @@ const HeroAllInfo = ({ hero }) => {
     dispatch(updateHero([hero._id, formData]))
       .then((response) => {
         if (!response.error) {
-          setfiles([]);
+          toast.success("Hero updated");
           return;
         }
         return;
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error));
   };
 
   const onDeleteImage = (image) => {
-    console.log(image);
-    // const newImages = images.filter((image, index) => index !== i);
     setImages((prev) => prev.filter((img) => img !== image));
-    console.log(images);
   };
 
   return (
@@ -75,7 +74,6 @@ const HeroAllInfo = ({ hero }) => {
         origin_description: hero.origin_description,
         superpowers: hero.superpowers,
         catch_phrase: hero.catch_phrase,
-        // images: hero.images,
       }}
       validationSchema={schema}
       onSubmit={onSubmit}
@@ -110,9 +108,9 @@ const HeroAllInfo = ({ hero }) => {
             <Input type="text" name="catch_phrase" />
             <Message name="catch_phrase" component="div" />
           </Label>
-          <FileLabel>
+          <Label>
             <span>Upload images</span>
-            <input
+            <FileInput
               type="file"
               accept="image/*"
               multiple
@@ -130,7 +128,7 @@ const HeroAllInfo = ({ hero }) => {
                 }
               }}
             />
-          </FileLabel>
+          </Label>
           <ImgWrap>
             {images.map((image) => {
               return (
@@ -139,9 +137,9 @@ const HeroAllInfo = ({ hero }) => {
                     src={`https://superheroes-f2qf.onrender.com/${image}`}
                     alt={image}
                   />
-                  <button type="button" onClick={() => onDeleteImage(image)}>
-                    del
-                  </button>
+                  <DelImgBtn type="button" onClick={() => onDeleteImage(image)}>
+                    <FaRegTrashAlt color="red" />
+                  </DelImgBtn>
                 </div>
               );
             })}

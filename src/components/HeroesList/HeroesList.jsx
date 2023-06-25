@@ -5,7 +5,6 @@ import HeroesItem from "../HeroesItem/HeroesItem";
 
 const HeroesList = () => {
   const heroes = useSelector(selectHeroes);
-  // console.log(heroes);
 
   return (
     <List>

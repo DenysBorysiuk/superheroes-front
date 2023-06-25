@@ -9,7 +9,11 @@ const HeroesItem = ({ nickname, _id, images }) => {
     <Item>
       <Link to={`/heroDetails/${_id}`} state={{ from: location }}>
         <Image
-          src={`https://superheroes-f2qf.onrender.com/${images[0]}`}
+          src={
+            images.length === 0
+              ? "https://placehold.co/400?text=No+image"
+              : `https://superheroes-f2qf.onrender.com/${images[0]}`
+          }
           alt={nickname}
         />
         <Title>{nickname}</Title>

@@ -29,13 +29,22 @@ export const Label = styled.label`
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  /* gap: 40px; */
 
   > span {
     display: flex;
     justify-content: flex-start;
     width: 30%;
     font-weight: 500;
+  }
+
+  > input::file-selector-button {
+    padding: 10px 20px;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(87, 53, 163, 0.7);
+    color: #ebd8ff;
+    cursor: pointer;
   }
 `;
 
@@ -47,7 +56,9 @@ export const Input = styled(Field)`
   height: 40px;
 `;
 
-export const FileLabel = styled.label``;
+export const FileInput = styled.input`
+  width: 50%;
+`;
 
 export const ImgWrap = styled.div`
   display: flex;
@@ -132,4 +143,23 @@ export const DelBtn = styled.button`
   border: none;
   outline: none;
   background-color: transparent;
+  cursor: pointer;
+  transition: transform 300ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+`;
+export const DelImgBtn = styled.button`
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 300ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 `;

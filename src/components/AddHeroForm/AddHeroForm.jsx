@@ -16,6 +16,7 @@ import {
   FileLabel,
   Message,
 } from "./AddHeroForm.styled";
+import toast from "react-hot-toast";
 
 const initialValues = {
   nickname: "",
@@ -47,6 +48,7 @@ const AddHeroForm = () => {
         if (!response.error) {
           navigate("/");
           resetForm();
+          toast.success("Hero created");
           return;
         }
         return;

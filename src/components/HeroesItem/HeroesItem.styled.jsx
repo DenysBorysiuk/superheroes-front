@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const Item = styled.li`
   width: 360px;
-  /* height: 460px; */
   border: 1px solid black;
   border-radius: 10px;
   overflow: hidden;

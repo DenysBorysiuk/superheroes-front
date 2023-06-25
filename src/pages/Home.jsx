@@ -18,10 +18,11 @@ const Home = () => {
   }, [dispatch, page]);
 
   const handlePageChange = (e, page) => {
-    //  scrollIntoView({
-    //     block: "start",
-    //     behavior: "smooth",
-    //   });
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
     setPage(page);
   };
 

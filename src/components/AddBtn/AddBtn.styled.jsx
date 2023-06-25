@@ -25,9 +25,4 @@ export const Link = styled(NavLink)`
   &:focus {
     transform: scale(1.05);
   }
-
-  /* &.active {
-    color: #ebd8ff;
-    background-color: #5735a3;
-  } */
 `;
