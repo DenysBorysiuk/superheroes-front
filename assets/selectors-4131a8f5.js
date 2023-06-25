@@ -1,0 +1,1 @@
+import{m as t,o as a,p as c}from"./index-aba5b5ec.js";function n(e=t){const s=e===t?a:c(e);return function(){const{store:o}=s();return o}}const u=n();function i(e=t){const s=e===t?u:n(e);return function(){return s().dispatch}}const h=i(),p=e=>e.heroes.items,x=e=>e.heroes.totalPages,f=e=>e.heroes.isLoading;export{x as a,f as b,p as s,h as u};
